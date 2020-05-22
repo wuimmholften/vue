@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+</head>
+<body>
+    <div id="app">
+        <p>Hello {{name}}!</p>
+        <br>
+        <label for="">Name:</label>
+        <input type="text" v-model="name">
+        <br>
+
+        <h1>TODO list</h1>
+        <ul>
+            <!-- <li>TODO #1</li>
+            <li>TODO #2</li> -->
+            <li v-for="(item, index) in todos">
+                
+                <div v-if="item.editMode">
+                    <!-- Se muestra cuando editMode === true -->
+                    <input type="text" v-model="item.value">
+                    <button @click="saveItem(index)">Save</button>
+                </div>
+                <div v-else>
+                    <!-- Se muestra cuando editMode === false -->
+                    {{item.value}}
+                    <button @click="editItem(index)">Edit</button>
+                    <button @click="deleteItem(index)">Delete</button>
+                </div>
+            </li>
+        </ul>
+        <input type="text" v-model="todo">
+        <button @click="addItem">Add</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
